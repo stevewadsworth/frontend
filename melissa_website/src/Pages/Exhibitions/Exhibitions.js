@@ -1,19 +1,26 @@
-import TestEvents from "./TestEventJson"
-
 import Event from "./Event";
+import ExhibitionsViewModel from "./ExhibitionsViewModel";
 
 export default function Exhibitions(){
+
     
-    let events = TestEvents["events"];
-    
-    let formatted = [];
-    for (let i=0; i < events.length; i++){
-        formatted.push(<Event key={i} eventInfo={events[i]} />)
-    }
+    let [upcoming, current, past] = ExhibitionsViewModel();
+
+    upcoming = upcoming.map((event, i) => {
+        return <Event key={i} eventInfo={event} />
+    })
+    current = current.map((event, i) => {
+        return <Event key={i} eventInfo={event} />
+    })
+    past = past.map((event, i) => {
+        return <Event key={i} eventInfo={event} />
+    })
 
     return(
         <div>
-            {formatted}
+            {(upcoming.length > 0 ? <><h2>Upcoming</h2> <div>{upcoming}</div></> : "")} 
+            {(current.length > 0 ? <><h2>Current</h2> <div>{current}</div></> : "")} 
+            {(past.length > 0 ? <><h2>Past</h2> <div>{past}</div></> : "")} 
         </div>
     );
 }
