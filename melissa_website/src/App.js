@@ -4,6 +4,7 @@ import Head from './Head/Head'
 import NavBar from './Head/NavBar';
 import ContentHandler from './ContentHandler';
 import pages from './PagesInfo';
+import Footer from './Footer';
 
 export default function App() {
 
@@ -14,6 +15,7 @@ export default function App() {
       <Head />
       <NavBar currentPage={currentPage} setPage={setPage}/>
       <ContentHandler currentPage={currentPage} />
+      <Footer />
     </div>
   );
 }
