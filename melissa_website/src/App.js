@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './App.css';
 import Head from './Head/Head'
 import NavBar from './Head/NavBar';
 import ContentHandler from './ContentHandler';
@@ -11,7 +10,7 @@ export default function App() {
   const [currentPage, setPage] = useState(pages.Home)
 
   return (
-    <div className='app'>
+    <div className="w-[50%] max-w-[50%]">
       <Head />
       <NavBar currentPage={currentPage} setPage={setPage}/>
       <ContentHandler currentPage={currentPage} />

@@ -8,10 +8,10 @@ export default function Gallery(){
     
 
     return (
-        <div className="flex">
+        <div className="flex space-x-4">
             { [...Array(numOfRows)].map((_, rowNum) => {
                 return(
-                    <div>
+                    <div className="flex-col space-y-4">
                         {imagejson.filter((_, i) => {
                             return (i+rowNum) % numOfRows === 0;
                         }).map((i) => {

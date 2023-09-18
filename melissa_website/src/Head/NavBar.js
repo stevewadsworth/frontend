@@ -1,6 +1,4 @@
-
 import pages from "../PagesInfo";
-import "./NavBar.css"
 
 export default function NavBar({ currentPage, setPage }){
 
@@ -8,7 +6,7 @@ export default function NavBar({ currentPage, setPage }){
     for (const [page, link] of Object.entries(pages)){
         tabs.push(<div 
             onClick={() => {setPage(link)}}
-            className={(link===currentPage ? "current tab" : "tab")}
+            className={(link===currentPage ? "text-black" : "text-gray-600")+" cursor-pointer hover:text-black px-4 transition-all active:text-black"}
             key={page}
             >
                 {page}
@@ -16,12 +14,12 @@ export default function NavBar({ currentPage, setPage }){
     }
 
     return (
-        <>
+        <div className="py-4 ">
             <hr></hr>
-            <div style={{display:"flex", justifyContent:"center"}}>
+            <div className="flex justify-center">
                 {tabs}
             </div>
             <hr></hr>
-        </>
+        </div>
     );
 }
