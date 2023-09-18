@@ -1,23 +1,27 @@
-import pages from "../PagesInfo";
+import { Link, useLocation } from "react-router-dom";
 
-export default function NavBar({ currentPage, setPage }){
+export default function NavBar(){
+    //className={(link===currentPage ? "text-black" : "text-gray-600")+" cursor-pointer hover:text-black px-4 transition-all active:text-black"}
 
-    let tabs = [];
-    for (const [page, link] of Object.entries(pages)){
-        tabs.push(<div 
-            onClick={() => {setPage(link)}}
-            className={(link===currentPage ? "text-black" : "text-gray-600")+" cursor-pointer hover:text-black px-4 transition-all active:text-black"}
-            key={page}
-            >
-                {page}
-            </div>)
-    }
+    const path = useLocation()["pathname"];
+    console.log(path);
+
+    const paths = ["Gallery", "Exhibition", "about", "contact"]
+    const pathLinks = paths.map((name) => {
+         return <Link 
+            to={name} 
+            className={(path==="/"+name ? "text-black" : "text-gray-600")+" cursor-pointer hover:text-black px-4 transition-all active:text-black"}>
+            {name}
+         </Link>
+    }) 
+
+
 
     return (
         <div className="py-4 ">
             <hr></hr>
             <div className="flex justify-center">
-                {tabs}
+                {pathLinks}
             </div>
             <hr></hr>
         </div>
