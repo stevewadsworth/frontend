@@ -1,27 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-//import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+
+import App from './App'
 
 import Gallery from './Pages/Gallery/Gallery';
 import Exhibitions from './Pages/Exhibitions/Exhibitions';
 import About from './Pages/About/About';
 import Contact from './Pages/Contact/Contact';
 
-import NavBar from './Head/NavBar';
-import Head from './Head/Head';
-import Footer from './Footer'
+import ImageView from './Pages/ImageView/ImageView';
+import {loader as ImageViewLoader} from './Pages/ImageView/ImageView';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <><Head/> <NavBar/> <Outlet/> <Footer/></>,
+    element: <App />,
     errorElement: <p>ERROR</p>,
     children: [
+      { index: true, element: <Navigate to="/Gallery" replace /> },
       {
+        index: true,
         path: "gallery",
         element: <Gallery />
       },
@@ -31,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "about",
-        "element": <About />
+        element: <About />
       },
       {
         path: "contact",
@@ -40,19 +42,16 @@ const router = createBrowserRouter([
   ]
   },
   {
-    path: "/test",
-    element: <p>test</p>
+    path: "/image-view/:index",
+    element: <ImageView />,
+    loader: ImageViewLoader
   }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <div className='flex justify-center'>
-      <div className='w-[50%] max-w-[50%]'>
-        <RouterProvider router={router} />
-      </div>
-    </div>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

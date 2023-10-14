@@ -6,7 +6,7 @@ export default function NavBar(){
     const path = useLocation()["pathname"];
     console.log(path);
 
-    const paths = ["Gallery", "Exhibition", "about", "contact"]
+    const paths = ["Gallery", "Exhibition", "About", "Contact"]
     const pathLinks = paths.map((name) => {
          return <Link 
             to={name} 
