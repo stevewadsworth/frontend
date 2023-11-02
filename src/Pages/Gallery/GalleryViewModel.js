@@ -1,8 +1,5 @@
-import imagejson from "./images.json"
+import galleryData from "../../Models/GalleryModel";
 
-export default function GalleryViewModel(){
-    
-    //replace with fetching from database
-    return imagejson
-
+export default async function GalleryViewModel(){
+    return await galleryData
 }

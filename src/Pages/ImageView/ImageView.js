@@ -1,31 +1,52 @@
 import { useLoaderData, Link } from "react-router-dom";
-import GalleryViewModel from "../Gallery/GalleryViewModel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import galleryData from "../../Models/GalleryModel";
 
-export async function loader({ params }){
-    return params.index
+export async function loader({ params }) {
+    return params.id
 }
 
-export default function ImageView(){
+export default function ImageView() {
+
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const [imageIndex, setImageIndex] = useState(Number(useLoaderData()));
 
-    const imagejson = GalleryViewModel()["Images"];
-    const numOfImages = imagejson.length
-    
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const data = await galleryData
+                setData(data);
+                setLoading(false);
+            } catch (error) {
+                setError(error);
+                setLoading(false);
+            }
+        }
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
+    const numOfImages = data.length
+    const image = data[imageIndex]
+    console.dir(image)
 
     const backImage = () => {
-        setImageIndex((oldIndex) => {return oldIndex-1})
+        setImageIndex((oldIndex) => { return oldIndex - 1 })
     }
     const forwardImage = () => {
-        setImageIndex((oldIndex) => {return oldIndex+1})
+        setImageIndex((oldIndex) => { return oldIndex + 1 })
     }
-
-    console.log(imageIndex)
-    console.log(imagejson)
-
-    const image = imagejson[imageIndex];
-    
 
     return (
         <>
@@ -36,13 +57,13 @@ export default function ImageView(){
             </div>
             <div className="flex max-h-[80%]">
                 <div className="w-2/3 h-full flex justify-evenly">
-                    <div onClick={imageIndex > 0 ? backImage : null}  
+                    <div onClick={imageIndex > 0 ? backImage : null}
                         className={"flex flex-col justify-center w-5 cursor-pointer select-none"+(imageIndex > 0 ? " text-black" : " text-gray-200")}
                         > ← </div>
-                    <div > 
-                        <img  src={"../TestImages/"+image["image"]} alt={image["title"]}></img>
+                    <div >
+                        <img src={image["image"]} alt={image["title"]}></img>
                     </div>
-                    <div onClick={imageIndex < numOfImages-1 ? forwardImage : null} 
+                    <div onClick={imageIndex < numOfImages-1 ? forwardImage : null}
                         className={"flex flex-col justify-center w-5 cursor-pointer select-none"+(imageIndex < numOfImages-1 ? " text-black" : " text-gray-200")}
                         > → </div>
                 </div>

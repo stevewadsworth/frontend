@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 
-export default function NavBar(){
+export default function NavBar() {
     //className={(link===currentPage ? "text-black" : "text-gray-600")+" cursor-pointer hover:text-black px-4 transition-all active:text-black"}
 
     const path = useLocation()["pathname"];
@@ -8,12 +8,13 @@ export default function NavBar(){
 
     const paths = ["Gallery", "Exhibition", "About", "Contact"]
     const pathLinks = paths.map((name) => {
-         return <Link 
-            to={name} 
-            className={(path==="/"+name ? "text-black" : "text-gray-600")+" cursor-pointer hover:text-black px-4 transition-all active:text-black"}>
+        return <Link
+            key={name}
+            to={name}
+            className={(path === "/" + name ? "text-black" : "text-gray-600") + " cursor-pointer hover:text-black px-4 transition-all active:text-black"}>
             {name}
-         </Link>
-    }) 
+        </Link>
+    })
 
 
 

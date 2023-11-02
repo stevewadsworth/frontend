@@ -15,27 +15,8 @@ import Contact from './Pages/Contact/Contact';
 import ImageView from './Pages/ImageView/ImageView';
 import {loader as ImageViewLoader} from './Pages/ImageView/ImageView';
 
-// Firebase App and Analytics configuration
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAw3gFciDEaDOJuJm4jqdxic2yGCFYPVXo",
-  authDomain: "portfolio-62576.firebaseapp.com",
-  projectId: "portfolio-62576",
-  storageBucket: "portfolio-62576.appspot.com",
-  messagingSenderId: "837131138375",
-  appId: "1:837131138375:web:fa457ccef224c786920862",
-  measurementId: "G-7H8Q6Y5JQV"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-getAnalytics(app);
+// Import Firebase to get it all setup
+import './Firebase.js'
 
 const router = createBrowserRouter([
   {
@@ -64,7 +45,7 @@ const router = createBrowserRouter([
   ]
   },
   {
-    path: "/image-view/:index",
+    path: "/image-view/:id",
     element: <ImageView />,
     loader: ImageViewLoader
   }
