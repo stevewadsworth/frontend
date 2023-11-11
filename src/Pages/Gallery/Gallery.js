@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 
 export default function Gallery() {
-
-
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -13,7 +11,6 @@ export default function Gallery() {
         async function fetchData() {
             try {
                 const data = await GalleryViewModel()
-                console.dir(data)
                 setData(data);
                 setLoading(false);
             } catch (error) {

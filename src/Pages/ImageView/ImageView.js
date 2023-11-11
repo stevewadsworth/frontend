@@ -39,7 +39,6 @@ export default function ImageView() {
 
     const numOfImages = data.length
     const image = data[imageIndex]
-    console.dir(image)
 
     const backImage = () => {
         setImageIndex((oldIndex) => { return oldIndex - 1 })

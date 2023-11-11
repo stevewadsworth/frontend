@@ -24,7 +24,3 @@ let galleryData = new Promise((resolve, reject) => {
 })
 
 export default galleryData
-
-export async function getEntryByUUID(uuid) {
-    return await galleryData.find(element => element.uuid === uuid)
-}
