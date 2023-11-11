@@ -50,7 +50,7 @@ export default function ImageView() {
     return (
         <>
             <div className="py-8">
-                <Link to="/gallery">
+                <Link to="/Gallery">
                     <div className="flex flex-row-reverse px-4">X</div>
                 </Link>
             </div>
