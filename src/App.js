@@ -8,7 +8,7 @@ export default function App() {
         <div className="container min-h-screen mx-auto flex flex-col">
             <Head />
             <div className='flex-1 flex justify-center'>
-                <div className='w-[50%] max-w-[50%]'>
+                <div className='w-[80%] max-w-[80%]'>
                     <NavBar />
                     <Outlet />
                 </div>

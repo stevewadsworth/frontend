@@ -1,8 +1,16 @@
 import GalleryViewModel from "./GalleryViewModel"
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 export default function Gallery() {
+    // Match the Tailwind breakpoints
+    const isSm = useMediaQuery({ query: '(max-width: 640px)' })
+    const isMd = useMediaQuery({ query: '(max-width: 768px)' })
+    // const isLg = useMediaQuery({ query: '(max-width: 1024px)' })
+    // const isXl = useMediaQuery({ query: '(max-width: 1280px)' })
+    // const is2xl = useMediaQuery({ query: '(max-width: 1536px)' })
+
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -30,7 +38,7 @@ export default function Gallery() {
         return <div>Error: {error.message}</div>;
     }
 
-    let numOfRows = 3;
+    let numOfRows = isSm ? 1 : isMd ? 2 : 3;
 
     return (
         <div className="flex space-x-4">
