@@ -3,15 +3,17 @@ import Head from "./Head/Head";
 import NavBar from "./Head/NavBar";
 import Footer from "./Footer";
 
-export default function App(){
-    return(
-        <div className='flex justify-center'>
-            <div className='w-[50%] max-w-[50%]'>
-                <Head />
-                <NavBar />
-                <Outlet />
-                <Footer />
+export default function App() {
+    return (
+        <div className="container min-h-screen mx-auto flex flex-col">
+            <Head />
+            <div className='flex-1 flex justify-center'>
+                <div className='w-[50%] max-w-[50%]'>
+                    <NavBar />
+                    <Outlet />
+                </div>
             </div>
+            <Footer />
         </div>
     );
 }

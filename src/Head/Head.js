@@ -1,6 +1,8 @@
-export default function Head(){
-    
+export default function Head() {
+
     return (
-        <h1 className="text-5xl flex place-content-center py-4">Melissa Wadsworth</h1>
+        <header>
+            <h1 className="text-7xl font-header flex place-content-center py-4">Melissa Wadsworth</h1>
+        </header>
     );
 }

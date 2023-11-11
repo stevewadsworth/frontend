@@ -19,7 +19,7 @@ export default function NavBar() {
 
 
     return (
-        <div className="py-4 ">
+        <div className="pb-4 ">
             <hr></hr>
             <div className="flex justify-center">
                 {pathLinks}
