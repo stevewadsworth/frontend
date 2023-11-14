@@ -44,9 +44,9 @@ export default function Gallery() {
         <div className="flex space-x-4">
             {[...Array(numOfRows)].map((_, rowNum) => {
                 return (
-                    <div className="flex flex-col space-y-4" key={rowNum}>
+                    <div className="flex flex-col space-y-4 xl:w-1/3 lg:w-1/2" key={rowNum}>
                         {data.filter((_, i) => {
-                            return (i + rowNum) % numOfRows === 0;
+                            return i % numOfRows === rowNum;
                         }).map((image, index) => {
                             const imageIndex = data.indexOf(image)
                             return (
@@ -56,7 +56,7 @@ export default function Gallery() {
                                     <img
                                         src={image["image"]}
                                         alt={image["title"]}
-                                        className="hover:opacity-50 transition-all hover:scale-105"
+                                        className="hover:transition-all hover:scale-105"
                                     ></img>
                                 </Link>);
                         })}
