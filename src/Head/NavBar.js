@@ -8,10 +8,12 @@ export default function NavBar() {
 
     const paths = ["Gallery", "Exhibition", "About", "Contact"]
     const pathLinks = paths.map((name) => {
+        let link = name.toLowerCase()
+        let selected = path.toLowerCase().endsWith(link)
         return <Link
             key={name}
-            to={name}
-            className={(path === "/" + name ? "text-black" : "text-gray-600") + " cursor-pointer hover:text-black px-4 transition-all active:text-black"}>
+            to={link}
+            className={(selected ? "text-black" : "text-gray-600") + " cursor-pointer hover:text-black px-4 transition-all active:text-black"}>
             {name}
         </Link>
     })

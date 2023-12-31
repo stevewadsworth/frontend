@@ -11,6 +11,7 @@ import Gallery from './Pages/Gallery/Gallery';
 import Exhibitions from './Pages/Exhibitions/Exhibitions';
 import About from './Pages/About/About';
 import Contact from './Pages/Contact/Contact';
+import ComingSoon from './Pages/ComingSoon/ComingSoon.js';
 
 import ImageView from './Pages/ImageView/ImageView';
 import {loader as ImageViewLoader} from './Pages/ImageView/ImageView';
@@ -21,10 +22,14 @@ import './Firebase.js'
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <ComingSoon />
+  },
+  {
+    path: "/real",
     element: <App />,
     errorElement: <p>ERROR</p>,
     children: [
-      { index: true, element: <Navigate to="/Gallery" replace /> },
+      { index: true, element: <Navigate to="/real/gallery" replace /> },
       {
         index: true,
         path: "gallery",
