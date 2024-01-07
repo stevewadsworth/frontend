@@ -13,11 +13,12 @@ import About from './Pages/About/About';
 import Contact from './Pages/Contact/Contact';
 import ComingSoon from './Pages/ComingSoon/ComingSoon.js';
 
-import ImageView from './Pages/ImageView/ImageView';
-import {loader as ImageViewLoader} from './Pages/ImageView/ImageView';
+import ImageView from './Pages/ImageView/ImageView.tsx';
 
 // Import Firebase to get it all setup
-import './Firebase.js'
+import './firebase.ts'
+import Error from './Pages/Error/Error.tsx';
+import GalleryModel from './Models/GalleryModel.ts';
 
 const router = createBrowserRouter([
   {
@@ -27,13 +28,15 @@ const router = createBrowserRouter([
   {
     path: "/real",
     element: <App />,
-    errorElement: <p>ERROR</p>,
+    errorElement: <Error />,
     children: [
       { index: true, element: <Navigate to="/real/gallery" replace /> },
       {
         index: true,
         path: "gallery",
-        element: <Gallery />
+        loader: async () => { return GalleryModel() },
+        element: <Gallery />,
+        errorElement: <Error />
       },
       {
         path: "exhibition",
@@ -52,7 +55,7 @@ const router = createBrowserRouter([
   {
     path: "/image-view/:id",
     element: <ImageView />,
-    loader: ImageViewLoader
+    loader: async () => { return GalleryModel() },
   }
 ])
 
