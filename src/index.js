@@ -13,7 +13,7 @@ import About from './Pages/About/About';
 import Contact from './Pages/Contact/Contact';
 import ComingSoon from './Pages/ComingSoon/ComingSoon.js';
 
-import ImageView from './Pages/ImageView/ImageView.tsx';
+import ImageView from './Pages/Gallery/ImageView.tsx';
 
 // Import Firebase to get it all setup
 import './firebase.ts'
