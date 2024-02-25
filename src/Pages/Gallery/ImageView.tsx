@@ -60,13 +60,13 @@ export default function ImageView() {
                                 to={`../${prev}`}
                                 relative="path"
                                 replace
-                                className={"absolute left-0 h-full w-1/2 flex flex-col justify-center p-5 select-none text-black text-7xl opacity-0 sm:hover:opacity-60 transition-opacity"}
+                                className={"absolute left-0 h-full w-1/2 flex flex-col justify-center p-5 select-none text-black text-7xl opacity-0 xl:hover:opacity-60 transition-opacity"}
                             ><i className="fa-solid fa-chevron-left p-5"></i></Link>
                             <Link
                                 to={`../${next}`}
                                 relative="path"
                                 replace
-                                className={"absolute right-0 h-full w-1/2 flex flex-col justify-center p-5 select-none text-black text-7xl text-right opacity-0 sm:hover:opacity-60 transition-opacity"}
+                                className={"absolute right-0 h-full w-1/2 flex flex-col justify-center p-5 select-none text-black text-7xl text-right opacity-0 xl:hover:opacity-60 transition-opacity"}
                             ><i className="fa-solid fa-chevron-right p-5"></i></Link>
                         </div>
                     </div>
