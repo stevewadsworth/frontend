@@ -23,14 +23,12 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const storage = getStorage(app)
 
-async function fetchFromStorage(file) {
+async function fetchFromStorage(file: string) : Promise<Response>{
   const url = await getDownloadURL(ref(storage, file))
-  const response = await fetch(url, { mode: "cors"})
-  const imageJson = await response.json()
-  return imageJson
+  return await fetch(url, { mode: "cors"})
 }
 
-async function getURL(file) {
+async function getURLForPath(file: string) :Promise<string> {
   return await getDownloadURL(ref(storage, file))
 }
 
@@ -39,7 +37,7 @@ const firebase = {
     analytics,
     storage,
     fetchFromStorage,
-    getURL
+    getURLForPath
 }
 
 export default firebase
