@@ -1,4 +1,4 @@
-import eventsData from "../../Models/EventsModel.js"
+import eventsData from "../../Models/EventsModel.ts"
 
 export default async function ExhibitionsViewModel(){
     let events = await eventsData

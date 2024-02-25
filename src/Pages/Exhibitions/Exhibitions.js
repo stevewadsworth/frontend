@@ -1,4 +1,4 @@
-import Event from "./Event";
+import Event from "./Event.tsx";
 import ExhibitionsViewModel from "./ExhibitionsViewModel";
 import React, { useState, useEffect } from 'react';
 

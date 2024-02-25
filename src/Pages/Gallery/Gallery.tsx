@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { Image } from "../../Models/Image";
 
 export default function Gallery() {
     // Match the Tailwind breakpoints
@@ -10,7 +11,7 @@ export default function Gallery() {
     // const isXl = useMediaQuery({ query: '(max-width: 1280px)' })
     // const is2xl = useMediaQuery({ query: '(max-width: 1536px)' })
 
-    const data = useLoaderData()
+    const data = useLoaderData() as Array<Image>
 
     let numOfRows = isSm ? 1 : isMd ? 2 : 3;
 

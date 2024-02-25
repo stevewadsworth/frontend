@@ -5,13 +5,13 @@ import reportWebVitals from './reportWebVitals';
 
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 
-import App from './App'
+import App from './App.tsx'
 
-import Gallery from './Pages/Gallery/Gallery';
+import Gallery from './Pages/Gallery/Gallery.tsx';
 import Exhibitions from './Pages/Exhibitions/Exhibitions';
-import About from './Pages/About/About';
-import Contact from './Pages/Contact/Contact';
-import ComingSoon from './Pages/ComingSoon/ComingSoon.js';
+import About from './Pages/About/About.tsx';
+import Contact from './Pages/Contact/Contact.tsx';
+import ComingSoon from './Pages/ComingSoon/ComingSoon.tsx';
 
 import ImageView from './Pages/Gallery/ImageView.tsx';
 

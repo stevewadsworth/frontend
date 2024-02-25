@@ -7,8 +7,8 @@ let eventsData = new Promise((resolve, _reject) => {
             const events = parsedResponse["events"];
 
             events.sort((a, b) => {
-                const aDate = new Date(a["start"])
-                const bDate = new Date(b["start"])
+                const aDate = new Date(a["start"]).getTime()
+                const bDate = new Date(b["start"]).getTime()
                 return bDate - aDate;
             })
 

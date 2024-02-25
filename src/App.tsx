@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Head from "./Head/Head";
-import NavBar from "./Head/NavBar";
-import Footer from "./Footer";
+import Head from "./Head/Head.tsx";
+import NavBar from "./Head/NavBar.tsx";
+import Footer from "./Footer.tsx";
+import React from "react";
 
 export default function App() {
     return (

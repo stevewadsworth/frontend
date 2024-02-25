@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function ComingSoon() {
     return (
         <div className="min-h-screen min-w-screen bg-cover bg-no-repeat bg-gradient-to-b from-black to-gray-500"> {/* fallback gradient background */}
