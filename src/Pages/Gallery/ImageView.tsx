@@ -1,10 +1,10 @@
 import { useNavigate, useLoaderData, useParams, Link } from "react-router-dom";
 import { Image } from "../../Models/Image"
 import React, { useEffect } from "react";
+import SwipeDetector from "../../Utilities/SwipeDetector.ts";
 
 export default function ImageView() {
     const navigate = useNavigate();
-
     const { id } = useParams()
     const realId = Number(id)
 
@@ -16,13 +16,28 @@ export default function ImageView() {
     const prev = realId > 0 ? realId - 1 : numOfImages - 1
     const next = (realId < (numOfImages - 1)) ? realId + 1 : 0
 
+    const swipeDetector = new SwipeDetector(
+        50,
+        (distance) => {
+            if (distance > 0) {
+                navigate(`../${next}`, { relative: "path", replace: true })
+            } else {
+                navigate(`../${prev}`, { relative: "path", replace: true})
+            }
+        },
+        (_distance) => {})
+
     useEffect(() => {
         // Make sure the window scroll position gets reset to the top
         window.scrollTo(0, 0)
     }, [])
 
     return (
-        <div className="sm:flex sm:justify-center sm:p-5">
+        <div
+            className="sm:flex sm:justify-center sm:p-5"
+            onTouchStart={(event) => {swipeDetector.onTouchStart(event.changedTouches[0].screenX, event.changedTouches[0].screenY)}}
+            onTouchEnd={(event) => {swipeDetector.onTouchEnd(event.changedTouches[0].screenX, event.changedTouches[0].screenY)}}
+        >
             <div>
                 <div className="flex flex-row-reverse">
                     <button
@@ -45,13 +60,13 @@ export default function ImageView() {
                                 to={`../${prev}`}
                                 relative="path"
                                 replace
-                                className={"absolute left-0 h-full w-1/2 flex flex-col justify-center p-5 select-none text-black text-7xl opacity-0 hover:opacity-60 transition-opacity"}
+                                className={"absolute left-0 h-full w-1/2 flex flex-col justify-center p-5 select-none text-black text-7xl opacity-0 sm:hover:opacity-60 transition-opacity"}
                             ><i className="fa-solid fa-chevron-left p-5"></i></Link>
                             <Link
                                 to={`../${next}`}
                                 relative="path"
                                 replace
-                                className={"absolute right-0 h-full w-1/2 flex flex-col justify-center p-5 select-none text-black text-7xl text-right opacity-0 hover:opacity-60 transition-opacity"}
+                                className={"absolute right-0 h-full w-1/2 flex flex-col justify-center p-5 select-none text-black text-7xl text-right opacity-0 sm:hover:opacity-60 transition-opacity"}
                             ><i className="fa-solid fa-chevron-right p-5"></i></Link>
                         </div>
                     </div>
