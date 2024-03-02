@@ -18,7 +18,7 @@ import ImageView from './Pages/Gallery/ImageView.tsx';
 import './firebase.ts'
 import Error from './Pages/Error/Error.tsx';
 import GalleryModel from './Models/GalleryModel.ts';
-import { EventsModel } from './Models/EventsModel.ts';
+import eventsLoader from './Loaders/eventsLoader.ts';
 
 const router = createBrowserRouter([
   {
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "exhibition",
-        loader: async () => { return EventsModel() },
+        loader: eventsLoader,
         element: <Exhibitions />,
         errorElement: <Error />
       },

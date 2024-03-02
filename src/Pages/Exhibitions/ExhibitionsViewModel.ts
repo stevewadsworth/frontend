@@ -1,20 +1,32 @@
 import { Exhibition } from "../../Models/Exhibition";
+import { ExhibitionsList } from "../../Models/ExhibitionsList";
 
 export default class ExhibitionsViewModel {
-    constructor(private exhibitions: Exhibition[]) {}
-
     private currentDate = new Date().getTime();
 
-    upcoming = this.exhibitions.filter((exhibition) => {
-        return (this.currentDate - new Date(exhibition.start).getTime() < 0)
-    })
+    public upcoming: Exhibition[]
+    public past: Exhibition[]
+    public current: Exhibition[]
 
-    past = this.exhibitions.filter((exhibition) => {
-        return (this.currentDate - new Date(exhibition.end).getTime() > 0)
-    })
+    constructor(exhibitions: ExhibitionsList) {
+        let eventsList = exhibitions.events
+        eventsList?.sort((a, b) => {
+            const aDate = new Date(a["start"]).getTime()
+            const bDate = new Date(b["start"]).getTime()
+            return bDate - aDate;
+        })
 
-    current = this.exhibitions.filter((exhibition) => {
-        return (this.currentDate - new Date(exhibition.start).getTime() > 0 &&
-                this.currentDate - new Date(exhibition.end).getTime() < 0)
-    })
+        this.upcoming = eventsList.filter((exhibition) => {
+            return (this.currentDate - new Date(exhibition.start).getTime() < 0)
+        })
+
+        this.past = eventsList.filter((exhibition) => {
+            return (this.currentDate - new Date(exhibition.end).getTime() > 0)
+        })
+
+        this.current = eventsList.filter((exhibition) => {
+            return (this.currentDate - new Date(exhibition.start).getTime() > 0 &&
+                    this.currentDate - new Date(exhibition.end).getTime() < 0)
+        })
+    }
 }

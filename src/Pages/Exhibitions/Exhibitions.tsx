@@ -1,11 +1,11 @@
 import Event from "./Event.tsx";
-import { Exhibition } from "../../Models/Exhibition.ts";
 import ExhibitionsViewModel from "./ExhibitionsViewModel.ts";
 import React from 'react';
 import { useLoaderData } from "react-router-dom";
+import { ExhibitionsList } from "../../Models/ExhibitionsList.ts";
 
 export default function Exhibitions() {
-    const data = useLoaderData() as Exhibition[]
+    const data = useLoaderData() as ExhibitionsList
     const viewModel = new ExhibitionsViewModel(data)
 
     const upcoming = viewModel.upcoming.map((event, i) => {
