@@ -71,8 +71,8 @@ export default function ImageView() {
                         </div>
                     </div>
                     <div className="sm:w-[400px] m-0 xl:ml-20 p-5 xl:ps-0 xl:pe-5">
-                        <h1 className="text-4xl">{image.title}</h1>
-                        <div className="">
+                        <h1 className="text-4xl font-thin">{image.title}</h1>
+                        <div className="font-light">
                             <p className="mt-10">{image.description}</p>
                             <p className="mt-10">{image.medium ? "Medium: " + image.medium : undefined}</p>
                             <p className="mt-1">{image.image_size ? "Image Size: " + image.image_size : undefined}</p>

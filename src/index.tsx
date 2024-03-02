@@ -10,7 +10,6 @@ import App from './App.tsx'
 import Gallery from './Pages/Gallery/Gallery.tsx';
 import Exhibitions from './Pages/Exhibitions/Exhibitions.tsx';
 import About from './Pages/About/About.tsx';
-import Contact from './Pages/Contact/Contact.tsx';
 import ComingSoon from './Pages/ComingSoon/ComingSoon.tsx';
 
 import ImageView from './Pages/Gallery/ImageView.tsx';
@@ -48,11 +47,7 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />
-      },
-      {
-        path: "contact",
-        element: <Contact />
-      },
+      }
   ]
   },
   {

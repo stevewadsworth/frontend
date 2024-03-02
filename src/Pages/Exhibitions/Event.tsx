@@ -8,10 +8,10 @@ export default function Event({ eventInfo }){
     }
 
     return(
-        <div className="m-8">
-            <h2 className="text-xl">{eventInfo["title"]}</h2>
+        <div className="m-8 font-light">
+            <h2 className="mb-1 text-xl font-extralight">{eventInfo["title"]}</h2>
             <div className="text-sm">
-                <div>{eventInfo["description"]}</div>
+                <div className="mb-1">{eventInfo["description"]}</div>
                 <div>{formatDate(eventInfo["start"])} - {formatDate(eventInfo["start"])}</div>
                 <div>{eventInfo["location"]}</div>
             </div>
