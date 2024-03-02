@@ -24,12 +24,25 @@ const analytics = getAnalytics(app);
 const storage = getStorage(app)
 
 async function fetchFromStorage(file: string) : Promise<Response>{
-  const url = await getDownloadURL(ref(storage, file))
+  const url = await getURLForPath(file)
   return await fetch(url, { mode: "cors"})
 }
 
+const pathMap = new Map<string, string>()
+
 async function getURLForPath(file: string) :Promise<string> {
-  return await getDownloadURL(ref(storage, file))
+  if (!pathMap.has(file)) {
+    const filePath = await getDownloadURL(ref(storage, file))
+    pathMap.set(file, filePath)
+  }
+  return new Promise((resolve, reject) => {
+    const path = pathMap.get(file)
+    if (path) {
+      resolve(path)
+    } else {
+      reject("File not found in storage")
+    }
+  })
 }
 
 const firebase = {
