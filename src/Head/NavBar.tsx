@@ -7,7 +7,7 @@ export default function NavBar() {
     const path = useLocation()["pathname"];
     console.log(path);
 
-    const paths = ["Gallery", "Exhibition", "About", "Contact"]
+    const paths = ["Gallery", "Exhibition", "About"]
     const pathLinks = paths.map((name) => {
         let link = name.toLowerCase()
         let selected = path.toLowerCase().endsWith(link)
