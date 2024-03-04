@@ -11,8 +11,8 @@ export default class ExhibitionsViewModel {
     constructor(exhibitions: ExhibitionsList) {
         let eventsList = exhibitions.events
         eventsList?.sort((a, b) => {
-            const aDate = new Date(a["start"]).getTime()
-            const bDate = new Date(b["start"]).getTime()
+            const aDate = new Date(a.start).getTime()
+            const bDate = new Date(b.start).getTime()
             return bDate - aDate;
         })
 

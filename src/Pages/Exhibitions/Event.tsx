@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Event({ eventInfo }){
 
-    const formatDate = (date) => {
-        let nums = date.split("-")
-        return nums[2] + "/" + nums[1] + "/" + nums[0]
+    const formatDate = (date: string) => {
+        let theDate = new Date(date)
+        return `${theDate.getDate}/${theDate.getMonth() + 1}/${theDate.getFullYear}`
     }
 
     return(
