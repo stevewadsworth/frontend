@@ -50,7 +50,7 @@ export default function ImageView() {
                         <i className="fa-regular fa-circle-xmark hover:font-bold"></i>
                     </button>
                 </div>
-                <div className="w-full flex flex-col xl:flex-row">
+                <div className="w-full flex flex-col lg:landscape:flex-row">
                     <div className="flex justify-center">
                         <div className="relative w-screen h-screen-w max-w-[640px] max-h-[640px] sm:w-[640px] sm:h-[640px] sm:p-5 sm:shadow-lg">
                             <div className="absolute flex justify-center w-screen h-screen-w max-w-[600px] max-h-[600px]  sm:w-[600px] sm:h-[600px]">
