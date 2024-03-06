@@ -10,7 +10,6 @@ import App from './App.tsx'
 import Gallery from './Pages/Gallery/Gallery.tsx';
 import Exhibitions from './Pages/Exhibitions/Exhibitions.tsx';
 import About from './Pages/About/About.tsx';
-import ComingSoon from './Pages/ComingSoon/ComingSoon.tsx';
 
 import ImageView from './Pages/Gallery/ImageView.tsx';
 
@@ -23,14 +22,10 @@ import eventsLoader from './Loaders/eventsLoader.ts';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ComingSoon />
-  },
-  {
-    path: "/real",
     element: <App />,
     errorElement: <Error />,
     children: [
-      { index: true, element: <Navigate to="/real/gallery" replace /> },
+      { index: true, element: <Navigate to="/gallery" replace /> },
       {
         index: true,
         path: "gallery",
