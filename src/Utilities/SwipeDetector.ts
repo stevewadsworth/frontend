@@ -1,9 +1,7 @@
 
 export default class SwipeDetector {
     protected touchStartX: number = 0
-    protected touchEndX: number = 0
     protected touchStartY: number = 0
-    protected touchEndY: number = 0
     protected swiping: boolean = false
 
     constructor(
@@ -19,16 +17,17 @@ export default class SwipeDetector {
     }
 
     onTouchEnd(x: number, y: number) {
-        this.touchEndX = x
-        this.touchEndY = y
         if (this.swiping) {
-            let xDistance = this.touchStartX - this.touchEndX
-            let yDistance = this.touchStartY - this.touchEndY
-            if (Math.abs(xDistance) > this.tolerance) {
+            let xDistance = this.touchStartX - x
+            let yDistance = this.touchStartY - y
+            const absX = Math.abs(xDistance)
+            const absY = Math.abs(yDistance)
+            if (absX > absY && absX > this.tolerance) {
+                console.log("X swiped")
                 // Indicate a horizontal swipe has been detected
                 this.xSwiped(xDistance)
-            }
-            if (Math.abs(yDistance) > this.tolerance) {
+            } else if (absY > absX && absY > this.tolerance) {
+                console.log("Y swiped")
                 // Indicate a vertical swipe has been detected
                 this.ySwiped(yDistance)
             }
