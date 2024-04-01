@@ -6,8 +6,10 @@ export default function About() {
             <div>
                 <h1 className="text-center m-5 text-4xl font-thin">About</h1>
                 <div className="max-w-prose font-light">
-                    <p className="m-5 text-justify">For as long as I can remember I have been attracted by patterns within the landscape, whether shadows, the structure of a tree or buildings. I grew up in the northern market town of Wigan where mining pit heads dominated the horizon. These strong architectural shapes developed my senses towards 3D work and so I headed to Birmingham to study for a degree in Ceramics and Glass.</p>
-                    <p className="m-5 text-justify">Relocating several times around the country has re-focused my passion towards painting and drawing, but still with a focus on sculptural forms.</p>
+                    <p className="m-5 text-justify">I am interested in both the small intricate details of nature and how we connect to it through trees, the landscape, clouds and simply the beauty of being, with all its quirks. </p>
+                    <p className="m-5 text-justify">I have always been attracted to working with my hands and started my artistic career in ceramics, using clay and decorating with surface patterns. Several years later, and whilst raising my family, I have returned to drawing and picked up a stick of charcoal... I instantly felt connected to nature and art and most importantly my hands.</p>
+                    <p className="m-5 text-justify">Currently I am exploring acrylics, which is opening up a whole new world of colour and possibilities...</p>
+                    <br></br>
                     <p className="m-5 text-center">Available for commissions</p>
                     <p className="m-5 text-center hover:text-blue-600"><a href="mailto:enquiries@melissawadsworth.co.uk">enquiries@melissawadsworth.co.uk</a></p>
                     <div className="flex justify-center hover:text-blue-600">
