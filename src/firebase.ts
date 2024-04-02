@@ -1,6 +1,5 @@
 // Firebase App configuration
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 // Add SDKs for Firebase products that you want to use
@@ -20,7 +19,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const storage = getStorage(app)
 
 async function fetchFromStorage(file: string) : Promise<Response>{
@@ -47,7 +45,6 @@ async function getURLForPath(file: string) :Promise<string> {
 
 const firebase = {
     app,
-    analytics,
     storage,
     fetchFromStorage,
     getURLForPath

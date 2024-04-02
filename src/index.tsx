@@ -11,13 +11,12 @@ import Gallery from './Pages/Gallery/Gallery.tsx';
 import Exhibitions from './Pages/Exhibitions/Exhibitions.tsx';
 import About from './Pages/About/About.tsx';
 
-import ImageView from './Pages/Gallery/ImageView.tsx';
-
 // Import Firebase to get it all setup
 import './firebase.ts'
 import Error from './Pages/Error/Error.tsx';
 import GalleryModel from './Models/GalleryModel.ts';
 import eventsLoader from './Loaders/eventsLoader.ts';
+import Carousel from './Pages/Gallery/Carousel.tsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +33,11 @@ const router = createBrowserRouter([
         errorElement: <Error />
       },
       {
+        path: "/gallery/:id",
+        element: <Carousel />,
+        loader: async () => { return GalleryModel() },
+      },
+      {
         path: "exhibition",
         loader: eventsLoader,
         element: <Exhibitions />,
@@ -43,12 +47,7 @@ const router = createBrowserRouter([
         path: "about",
         element: <About />
       }
-  ]
-  },
-  {
-    path: "/image-view/:id",
-    element: <ImageView />,
-    loader: async () => { return GalleryModel() },
+    ]
   }
 ])
 

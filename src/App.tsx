@@ -1,20 +1,15 @@
-import { Outlet } from "react-router-dom";
-import Head from "./Head/Head.tsx";
-import NavBar from "./Head/NavBar.tsx";
-import Footer from "./Footer.tsx";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import React from "react";
+import '@shoelace-style/shoelace/dist/themes/light.css';
+import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path';
+
+setBasePath('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/');
 
 export default function App() {
     return (
         <div className="container min-h-screen mx-auto flex flex-col">
-            <Head />
-            <div className='flex-1 flex justify-center'>
-                <div className='w-[80%] max-w-[80%]'>
-                    <NavBar />
-                    <Outlet />
-                </div>
-            </div>
-            <Footer />
+            <Outlet />
+            <ScrollRestoration />
         </div>
     );
 }
