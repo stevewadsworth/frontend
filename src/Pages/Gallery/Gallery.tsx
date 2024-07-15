@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Image } from "../../Models/Image";
@@ -6,6 +6,7 @@ import breakpoints from "../../Utilities/breakpoints.ts";
 import Head from "../../Head/Head.tsx";
 import NavBar from "../../Head/NavBar.tsx";
 import Footer from "../../Footer.tsx"
+import ImageTile from "./ImageTile.tsx";
 
 export default function Gallery() {
     // Match the Tailwind breakpoints
@@ -28,18 +29,7 @@ export default function Gallery() {
                                 return i % numOfRows === rowNum;
                             }).map((image, index) => {
                                 const imageIndex = data.indexOf(image)
-                                return (
-                                    <Link
-                                        to={"/gallery/" + imageIndex}
-                                        key={index}
-                                        preventScrollReset={false}
-                                    >
-                                        <img
-                                            src={image["image"]}
-                                            alt={image["title"]}
-                                            className="hover:transition-all md:hover:scale-105"
-                                        ></img>
-                                    </Link>);
+                                return <ImageTile image={image} index={imageIndex} key={index}/>
                             })}
                         </div>
                     )
