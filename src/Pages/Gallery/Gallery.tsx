@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Image } from "../../Models/Image";
