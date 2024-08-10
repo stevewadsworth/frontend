@@ -41,7 +41,7 @@ export default function ImageTile(props: { image: Image, index: number}) {
                 className="w-full aspect-square flex justify-center"
             >
                 <div className="flex flex-col justify-center">
-                    <SyncLoader className="opacity-25" />
+                    <SyncLoader className="opacity-25" size={10} />
                 </div>
             </div>
           )}

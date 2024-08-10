@@ -24,7 +24,7 @@ export default function Gallery() {
             <div className="flex space-x-4">
                 {[...Array(numOfRows)].map((_, rowNum) => {
                     return (
-                        <div className="flex flex-col space-y-4 xl:w-1/3 lg:w-1/2" key={rowNum}>
+                        <div className="flex flex-col space-y-4 w-full xl:w-1/3 lg:w-1/2" key={rowNum}>
                             {data.filter((_, i) => {
                                 return i % numOfRows === rowNum;
                             }).map((image, index) => {
