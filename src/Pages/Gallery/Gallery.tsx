@@ -1,5 +1,4 @@
 import { useLoaderData } from "react-router-dom";
-import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Image } from "../../Models/Image";
 import breakpoints from "../../Utilities/breakpoints.ts";

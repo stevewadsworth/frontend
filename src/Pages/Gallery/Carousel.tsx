@@ -1,10 +1,10 @@
-import React, { useRef } from "react"
+import { useRef } from "react"
 import { useEffect } from "react"
 import { useLoaderData, useNavigate, useParams } from "react-router-dom"
 import { Image } from "../../Models/Image.ts"
-import SlCarousel from '@shoelace-style/shoelace/dist/react/carousel'
-import SlCarouselItem from '@shoelace-style/shoelace/dist/react/carousel-item'
-import SlCarouselType from "@shoelace-style/shoelace/dist/components/carousel/carousel.component"
+import SlCarousel from '@shoelace-style/shoelace/dist/react/carousel/index.js'
+import SlCarouselItem from '@shoelace-style/shoelace/dist/react/carousel-item/index.js'
+import SlCarouselType from "@shoelace-style/shoelace/dist/components/carousel/carousel.component.js"
 import CarouselCardView from "./CarouselCard.tsx"
 import { useMediaQuery } from "react-responsive"
 import breakpoints from "../../Utilities/breakpoints.ts"

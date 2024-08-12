@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function Event({ eventInfo }){
+export default function Event({ eventInfo }: { eventInfo: any }){
 
     const formatDate = (date: string) => {
         let theDate = new Date(date)

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Image } from "../../Models/Image"
 import firebase from "../../firebase.ts"
 import SyncLoader from "react-spinners/SyncLoader"

@@ -1,4 +1,3 @@
-import React from "react";
 import Head from "../../Head/Head.tsx";
 import NavBar from "../../Head/NavBar.tsx";
 import Footer from "../../Footer.tsx";

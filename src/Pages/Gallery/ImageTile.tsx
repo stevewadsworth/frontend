@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Image } from "../../Models/Image";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import firebase from "../../firebase.ts";
 import SyncLoader from "react-spinners/SyncLoader"
 
