@@ -1,6 +1,6 @@
-import React from "react";
+import { Exhibition } from "../../Models/Exhibition";
 
-export default function Event({ eventInfo }){
+export default function Event({ eventInfo }: { eventInfo: Exhibition  }){
 
     const formatDate = (date: string) => {
         let theDate = new Date(date)

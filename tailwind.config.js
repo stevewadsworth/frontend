@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'header': '"Cormorant Infant", ui-serif',
-        'sans': 'montserrat, sans-serif'
+        'header': ['"Cormorant Infant"', 'ui-serif'],
+        'sans': ['montserrat', 'sans-serif']
       },
     },
   },

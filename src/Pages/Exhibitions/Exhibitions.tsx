@@ -1,6 +1,5 @@
 import Event from "./Event.tsx";
 import ExhibitionsViewModel from "./ExhibitionsViewModel.ts";
-import React from 'react';
 import { useLoaderData } from "react-router-dom";
 import { ExhibitionsList } from "../../Models/ExhibitionsList.ts";
 import Head from "../../Head/Head.tsx";
