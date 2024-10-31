@@ -2,12 +2,11 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function NavBar() {
     const path = useLocation()["pathname"];
-    console.log(path);
 
     const paths = ["Gallery", "Exhibition", "About"]
     const pathLinks = paths.map((name) => {
-        let link = '/' + name.toLowerCase()
-        let selected = path.toLowerCase().endsWith(link)
+        const link = '/' + name.toLowerCase()
+        const selected = path.toLowerCase().endsWith(link)
         return <Link
             key={name}
             to={link}
@@ -15,8 +14,6 @@ export default function NavBar() {
             {name}
         </Link>
     })
-
-
 
     return (
         <div className="pb-4">

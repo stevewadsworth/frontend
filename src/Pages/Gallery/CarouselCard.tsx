@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Image } from "../../Models/Image"
-import firebase from "../../firebase.ts"
+import { getURLForPath } from "../../Utilities/firebase.ts"
 import SyncLoader from "react-spinners/SyncLoader"
 
 export default function CarouselCardView(props: { image: Image }) {  
@@ -8,7 +8,7 @@ export default function CarouselCardView(props: { image: Image }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        firebase.getURLForPath(`images/${props.image.image}`).then((url) => {
+        getURLForPath(`images/${props.image.image}`).then((url) => {
             setImageURL(url);
         })
     }, [props.image.image])

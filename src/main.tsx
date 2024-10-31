@@ -4,43 +4,44 @@ import './main.css';
 
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 
-import App from './App.tsx'
+import App from './Pages/Fragments/App.tsx'
 
 import Gallery from './Pages/Gallery/Gallery.tsx';
 import Exhibitions from './Pages/Exhibitions/Exhibitions.tsx';
 import About from './Pages/About/About.tsx';
 
 // Import Firebase to get it all setup
-import './firebase.ts'
-import Error from './Pages/Error/Error.tsx';
-import GalleryModel from './Models/GalleryModel.ts';
-import eventsLoader from './Loaders/eventsLoader.ts';
+import './Utilities/firebase.ts'
+import ShowError from './Pages/Error/ShowError.tsx';
+import exhibitionsLoader from './Loaders/exhibitionsLoader.ts';
 import Carousel from './Pages/Gallery/Carousel.tsx';
+import galleryLoader from './Loaders/galleryLoader.ts';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Error />,
+    errorElement: <ShowError />,
     children: [
       { index: true, element: <Navigate to="/gallery" replace /> },
       {
         index: true,
         path: "gallery",
-        loader: async () => { return GalleryModel() },
+        loader: galleryLoader, // Use the shared loader
         element: <Gallery />,
-        errorElement: <Error />
+        errorElement: <ShowError />
       },
       {
         path: "/gallery/:id",
-        element: <Carousel />,
-        loader: async () => { return GalleryModel() },
+        element: <Carousel backLink='/gallery' />,
+        loader: galleryLoader, // Use the shared loader
+        errorElement: <ShowError />
       },
       {
         path: "exhibition",
-        loader: eventsLoader,
+        loader: exhibitionsLoader,
         element: <Exhibitions />,
-        errorElement: <Error />
+        errorElement: <ShowError />
       },
       {
         path: "about",

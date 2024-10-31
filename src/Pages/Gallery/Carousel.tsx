@@ -1,38 +1,31 @@
-import { useRef } from "react"
-import { useEffect } from "react"
 import { useLoaderData, useNavigate, useParams } from "react-router-dom"
 import { Image } from "../../Models/Image.ts"
 import SlCarousel from '@shoelace-style/shoelace/dist/react/carousel/index.js'
 import SlCarouselItem from '@shoelace-style/shoelace/dist/react/carousel-item/index.js'
-import SlCarouselType from "@shoelace-style/shoelace/dist/components/carousel/carousel.component.js"
 import CarouselCardView from "./CarouselCard.tsx"
 import { useMediaQuery } from "react-responsive"
-import breakpoints from "../../Utilities/breakpoints.ts"
+import breakpoints from "../../Utilities/mediaBreakpoints.ts"
+import './carousel.css'
 
-export default function Carousel() {
+export default function Carousel(props?: { backLink?: string }) {
     // Match the Tailwind breakpoints
     const isSm = useMediaQuery(breakpoints.sm)
     
     const { id } = useParams()
-    const realId = Number(id)
-    const carouselRef = useRef<SlCarouselType | null>(null)
+    const startId = Number(id)
 
     const data = useLoaderData() as Array<Image>
+
+    if (startId < 0 || startId >= data.length) {
+        console.error(`Invalid slide index: ${startId}`)
+        throw new Error(`Sorry, the image you are looking for is not available.`)
+    }
+
     const navigate = useNavigate()
 
-    useEffect(() => {
-        console.log('effect')
-        // Make sure the window scroll position gets reset to the top
-        window.scrollTo(0, 0)
-        // Need to get this out of the flow or it doesn't work right
-        setTimeout(() => {
-            carouselRef?.current?.goToSlide(realId, 'auto')
-        }, 0)
-        // Purposefully do not want realId to trigger an update
-        // here as we have already made the transition, so omitting
-        // it from the deps array.
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const backLink = props?.backLink || '/'
+
+    let slide = Math.min(startId, data.length - 1)
 
     const listItems = data.map((image, index) => {
         const key = `item${index}`
@@ -55,7 +48,7 @@ export default function Carousel() {
                     type="button"
                     className="cursor-pointer px-4"
                     onClick={() => {
-                        navigate(-1);
+                        navigate(backLink);
                     }}
                 >
                     <i className="fa-regular fa-circle-xmark hover:font-bold text-2xl text-slate-500"></i>
@@ -64,9 +57,10 @@ export default function Carousel() {
             <SlCarousel
                 mouse-dragging
                 navigation={!isSm}
-                ref={carouselRef}
-                className="h-full"
+                className="custom-carousel h-full"
+                activeSlide={slide}
                 onSlSlideChange={(event) => {
+                    slide = event.detail.index
                     navigate(`../${event.detail.index}`, { relative: 'path', replace: true })
                 }}
             >

@@ -3,7 +3,7 @@ import { Exhibition } from "../../Models/Exhibition";
 export default function Event({ eventInfo }: { eventInfo: Exhibition  }){
 
     const formatDate = (date: string) => {
-        let theDate = new Date(date)
+        const theDate = new Date(date)
         return `${theDate.getDate()}/${theDate.getMonth() + 1}/${theDate.getFullYear()}`
     }
 

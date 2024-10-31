@@ -7,3 +7,7 @@ export type Exhibition = {
     end: string,
     url: string
 }
+
+export type ExhibitionsList = {
+    events: Exhibition[]
+}

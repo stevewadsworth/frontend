@@ -8,3 +8,7 @@ export type Image = {
     price: string;
     year: string;
 }
+
+export type Images = {
+    Images: Array<Image>
+}
