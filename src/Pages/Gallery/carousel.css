@@ -1,0 +1,10 @@
+/* Shoelace has switched the default direction of the navigation arrows to 
+point inwards. This CSS reverses those arrows back to the old, standard, behaviour */
+ 
+ .custom-carousel::part(navigation) {
+  flex-direction: row-reverse;
+}
+
+.custom-carousel::part(navigation-button) {
+  transform: rotate(180deg);
+}

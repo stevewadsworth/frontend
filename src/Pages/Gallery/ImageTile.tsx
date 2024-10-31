@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Image } from "../../Models/Image";
 import { useEffect, useRef, useState } from "react";
-import firebase from "../../firebase.ts";
+import { getURLForPath } from "../../Utilities/firebase.ts";
 import SyncLoader from "react-spinners/SyncLoader"
 
 export default function ImageTile(props: { image: Image, index: number}) {
@@ -16,7 +16,7 @@ export default function ImageTile(props: { image: Image, index: number}) {
         const observer = new IntersectionObserver((entries) => {
           // Set actual image source && unobserve when intersecting
           if (entries[0].isIntersecting) {
-            firebase.getURLForPath(`images/${props.image.image}`).then((url) => {
+            getURLForPath(`images/${props.image.image}`).then((url) => {
                 setImageURL(url);
             })
 

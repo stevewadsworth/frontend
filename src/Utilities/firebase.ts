@@ -21,14 +21,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app)
 
-async function fetchFromStorage(file: string) : Promise<Response>{
+export async function fetchFromStorage(file: string) : Promise<Response>{
   const url = await getURLForPath(file)
   return await fetch(url, { mode: "cors"})
 }
 
+export async function fetchJSONFromStorage<T>(file: string) : Promise<T> {
+  const response = await fetchFromStorage(file)
+  return await response.json() as T
+}
+
 const pathMap = new Map<string, string>()
 
-async function getURLForPath(file: string) :Promise<string> {
+export async function getURLForPath(file: string) :Promise<string> {
   if (!pathMap.has(file)) {
     const filePath = await getDownloadURL(ref(storage, file))
     pathMap.set(file, filePath)
@@ -42,12 +47,3 @@ async function getURLForPath(file: string) :Promise<string> {
     }
   })
 }
-
-const firebase = {
-    app,
-    storage,
-    fetchFromStorage,
-    getURLForPath
-}
-
-export default firebase

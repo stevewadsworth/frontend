@@ -1,6 +1,6 @@
-import Head from "../../Head/Head.tsx";
-import NavBar from "../../Head/NavBar.tsx";
-import Footer from "../../Footer.tsx";
+import Head from "../Fragments/Head/Head.tsx";
+import NavBar from "../Fragments/Head/NavBar.tsx";
+import Footer from "../Fragments/Footer/Footer.tsx";
 
 export default function About() {
     return (

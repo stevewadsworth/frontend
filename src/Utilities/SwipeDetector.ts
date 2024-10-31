@@ -18,8 +18,8 @@ export default class SwipeDetector {
 
     onTouchEnd(x: number, y: number) {
         if (this.swiping) {
-            let xDistance = this.touchStartX - x
-            let yDistance = this.touchStartY - y
+            const xDistance = this.touchStartX - x
+            const yDistance = this.touchStartY - y
             const absX = Math.abs(xDistance)
             const absY = Math.abs(yDistance)
             if (absX > absY && absX > this.tolerance) {

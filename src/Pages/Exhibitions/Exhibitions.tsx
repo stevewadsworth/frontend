@@ -1,22 +1,22 @@
 import Event from "./Event.tsx";
-import ExhibitionsViewModel from "./ExhibitionsViewModel.ts";
+import ExhibitionViewModel from "./ExhibitionViewModel.ts";
 import { useLoaderData } from "react-router-dom";
-import { ExhibitionsList } from "../../Models/ExhibitionsList.ts";
-import Head from "../../Head/Head.tsx";
-import NavBar from "../../Head/NavBar.tsx";
-import Footer from "../../Footer.tsx";
+import Head from "../Fragments/Head/Head.tsx";
+import NavBar from "../Fragments/Head/NavBar.tsx";
+import Footer from "../Fragments/Footer/Footer.tsx";
+import { ExhibitionsList } from "../../Models/Exhibition.ts";
 
 export default function Exhibitions() {
     const data = useLoaderData() as ExhibitionsList
-    const viewModel = new ExhibitionsViewModel(data)
+    const model = new ExhibitionViewModel(data)
 
-    const upcoming = viewModel.upcoming.map((event, i) => {
+    const upcoming = model.upcoming.map((event, i) => {
         return <Event key={i} eventInfo={event} />
     })
-    const current = viewModel.current.map((event, i) => {
+    const current = model.current.map((event, i) => {
         return <Event key={i} eventInfo={event} />
     })
-    const past = viewModel.past.map((event, i) => {
+    const past = model.past.map((event, i) => {
         return <Event key={i} eventInfo={event} />
     })
 

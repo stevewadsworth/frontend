@@ -1,7 +1,6 @@
-import { Exhibition } from "../../Models/Exhibition";
-import { ExhibitionsList } from "../../Models/ExhibitionsList";
+import { Exhibition, ExhibitionsList } from "../../Models/Exhibition";
 
-export default class ExhibitionsViewModel {
+export default class ExhibitionViewModel {
     private currentDate = new Date().getTime();
 
     public upcoming: Exhibition[]
@@ -9,7 +8,7 @@ export default class ExhibitionsViewModel {
     public current: Exhibition[]
 
     constructor(exhibitions: ExhibitionsList) {
-        let eventsList = exhibitions.events
+        const eventsList = exhibitions.events
         eventsList?.sort((a, b) => {
             const aDate = new Date(a.start).getTime()
             const bDate = new Date(b.start).getTime()

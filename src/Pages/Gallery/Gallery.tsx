@@ -1,10 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
-import { Image } from "../../Models/Image";
-import breakpoints from "../../Utilities/breakpoints.ts";
-import Head from "../../Head/Head.tsx";
-import NavBar from "../../Head/NavBar.tsx";
-import Footer from "../../Footer.tsx"
+import { Images } from "../../Models/Image";
+import breakpoints from "../../Utilities/mediaBreakpoints.ts";
+import Head from "../Fragments/Head/Head.tsx";
+import NavBar from "../Fragments/Head/NavBar.tsx";
+import Footer from "../Fragments/Footer/Footer.tsx"
 import ImageTile from "./ImageTile.tsx";
 
 export default function Gallery() {
@@ -12,9 +12,10 @@ export default function Gallery() {
     const isSm = useMediaQuery(breakpoints.sm)
     const isMd = useMediaQuery(breakpoints.md)
 
-    const data = useLoaderData() as Array<Image>
+    const images = useLoaderData() as Images
+    const data = images.Images
 
-    let numOfRows = isSm ? 1 : isMd ? 2 : 3;
+    const numOfRows = isSm ? 1 : isMd ? 2 : 3;
 
     return (
         <>
