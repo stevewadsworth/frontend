@@ -1,5 +1,5 @@
 import { useLoaderData, useNavigate, useParams } from "react-router-dom"
-import { Image } from "../../Models/Image.ts"
+import { Images } from "../../Models/Image.ts"
 import SlCarousel from '@shoelace-style/shoelace/dist/react/carousel/index.js'
 import SlCarouselItem from '@shoelace-style/shoelace/dist/react/carousel-item/index.js'
 import CarouselCardView from "./CarouselCard.tsx"
@@ -14,7 +14,8 @@ export default function Carousel(props?: { backLink?: string }) {
     const { id } = useParams()
     const startId = Number(id)
 
-    const data = useLoaderData() as Array<Image>
+    const images = useLoaderData() as Images
+    const data = images.Images
 
     if (startId < 0 || startId >= data.length) {
         console.error(`Invalid slide index: ${startId}`)
