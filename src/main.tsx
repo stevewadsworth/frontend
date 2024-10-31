@@ -25,14 +25,13 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to="/gallery" replace /> },
       {
-        index: true,
         path: "gallery",
         loader: galleryLoader, // Use the shared loader
         element: <Gallery />,
         errorElement: <ShowError />
       },
       {
-        path: "/gallery/:id",
+        path: "gallery/:id",
         element: <Carousel backLink='/gallery' />,
         loader: galleryLoader, // Use the shared loader
         errorElement: <ShowError />
