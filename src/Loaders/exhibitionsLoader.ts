@@ -1,13 +1,9 @@
 import { fetchJSONFromStorage } from "../Utilities/firebase.ts"
-import Memo from "../Utilities/Memo.ts"
+import { memo } from "../Utilities/memo.ts"
 import { ExhibitionsList } from "../Models/Exhibition.ts"
 
-const exhibitionsMemo = new Memo(exhibitionsFetcher)
-
-async function exhibitionsFetcher(): Promise<ExhibitionsList | undefined> {
-    return await fetchJSONFromStorage('events/events.json')
-}
+const exhibitionsMemo = memo(() => fetchJSONFromStorage<ExhibitionsList | undefined>('events/events.json'))
 
 export default async function exhibitionsLoader(): Promise<ExhibitionsList | undefined> {
-    return await exhibitionsMemo.getData()
+    return await exhibitionsMemo()
 }
