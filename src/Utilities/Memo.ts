@@ -1,22 +1,15 @@
 const DEFAULT_CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 
-export default class Memo<T> {
-    private data: T | null = null
-    private lastFetchTime: number = 0
-    private fetcher: () => T
-    private cacheDuration: number
+export const memo = <T>(fetcher: () => T, cacheDuration: number = DEFAULT_CACHE_DURATION) => {
+    let cachedData: T | null = null
+    let lastFetchTime: number = 0
 
-    constructor(fetcher: () => T, cacheDuration: number = DEFAULT_CACHE_DURATION) {
-        this.fetcher = fetcher
-        this.cacheDuration = cacheDuration
-    }
-
-    async getData(): Promise<T> {
-        const expired = (Date.now() - this.lastFetchTime > this.cacheDuration)
-        if (this.data === null || expired) {
-            this.data = await this.fetcher()
-            this.lastFetchTime = Date.now()
+    return async (force = false) => {
+        const expired = (Date.now() - lastFetchTime > cacheDuration)
+        if (cachedData === null || expired || force) {
+            cachedData = await fetcher()
+            lastFetchTime = Date.now()
         }
-        return this.data
+        return cachedData
     }
 }
