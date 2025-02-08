@@ -5,7 +5,6 @@ import SlCarouselItem from '@shoelace-style/shoelace/dist/react/carousel-item/in
 import CarouselCardView from "./CarouselCard.tsx"
 import { useMediaQuery } from "react-responsive"
 import breakpoints from "../../Utilities/mediaBreakpoints.ts"
-import './carousel.css'
 
 export default function Carousel(props?: { backLink?: string }) {
     // Match the Tailwind breakpoints
